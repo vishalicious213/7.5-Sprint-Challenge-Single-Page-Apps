@@ -38,15 +38,28 @@ main {
   margin: 0 auto;
 } */
 
-header h1, h2 {
+header h1, h2, .logo {
   text-align: center;
 }
 
-img {
+.mugshot {
   width: 100%;
   border-radius: .5rem;
 }
 
+.mugshot:hover {
+  box-sizing: border-box;
+  border: 2px solid black;
+}
+
 p {
   font-size: .9rem;
+}
+
+.welcome-page {
+  text-align: center;
+}
+
+.main-img {
+  width: 50%;
 }
