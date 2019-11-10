@@ -57,7 +57,7 @@ const Banner = styled.img`
 export default function Header() {
   return (
     <div className="logo">
-      <Banner src={require("../components/logo.png")}></Banner>
+      <Banner src={require("../components/logo.png")} alt="Rick and Morty logo"></Banner>
       <Top className="ui centered">
         <h1 className="ui center">Rick &amp; Morty Fan Page</h1>
         <Nav>
