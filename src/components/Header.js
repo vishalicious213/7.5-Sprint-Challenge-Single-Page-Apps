@@ -5,10 +5,10 @@ import styled from "styled-components";
 const Nav = styled.nav`
   display: flex;
   justify-content: space-around;
-  width: 30%;
+  width: 35%;
   a {
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: cadetblue;
     font-weight: bold;
     text-shadow:  
@@ -61,6 +61,7 @@ export default function Header() {
         <Nav>
           <Link to="/">Home</Link>
           <Link to="/characters">Characters</Link>
+          <Link to="/search">Search</Link>
         </Nav>
       </Top>
     </div>
