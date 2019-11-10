@@ -10,10 +10,19 @@ const Card = styled.div`
   padding: .5rem;
   :hover {border: 2px solid black;}`
 
+const Mugshot = styled.img`
+  width: 100%;
+  border-radius: .5rem;
+  :hover {
+    box-sizing: border-box;
+    border: 2px solid black;
+  }
+}`
+
 export default function CharacterCard(props) {
   return (
     <Card>
-      <img className="mugshot" src={props.imgSrc} alt={props.name}></img>
+      <Mugshot className="mugshot" src={props.imgSrc} alt={props.name}></Mugshot>
       <h2>{props.name}</h2>
       <p>Species: {props.species}</p>
       <p>Type: {props.type}</p>
@@ -24,11 +33,3 @@ export default function CharacterCard(props) {
     </Card>
   )
 }
-
-/* 
-  <CharacterCard key={char.id} name={char.name} species={char.species} status={char.status} gender={char.gender} /> 
-
-  <span>todo: character</span>
-  
-  key={props.key}
-*/
