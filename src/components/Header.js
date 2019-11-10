@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Nav = styled.nav`
   display: flex;
   justify-content: space-around;
-  width: 35%;
+  width: 40%;
   a {
     text-decoration: none;
     font-size: 1.5rem;
@@ -18,6 +18,9 @@ const Nav = styled.nav`
       -1px 1px 0 #000,
       1px 1px 0 #000;
     :hover {color: darkkhaki;}
+    @media (max-width: 1100px) {
+      font-size: 1.75rem;
+    }
     @media (max-width: 630px) {
       font-size: 1.5rem;
     }
@@ -34,7 +37,7 @@ const Top = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: gainsboro;
   text-shadow:  
     3px 3px 0 #000,
