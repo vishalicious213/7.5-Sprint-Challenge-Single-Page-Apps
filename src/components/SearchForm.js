@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
 
 const Input = styled.input`
@@ -38,16 +39,39 @@ const Button = styled.button`
 
 export default function SearchForm() {
   const [inputValue, setInputValue] = useState("");
+  const [charList, setCharList] = useState([]);
 
   const searchHandler = event => {
+    axiosCall();
     setInputValue(event.target.value);
     console.log(inputValue);
   };
 
   const submitHandler = event => {
     event.preventDefault();
-    console.log(inputValue);
+    // console.log(inputValue);
+    // axiosCall();
+    console.log(charList);
   };
+
+  function axiosCall() {
+    if (charList === [] || (charList !== [] && charList !== setCharList)) {
+      axios.get('https://rickandmortyapi.com/api/character/')
+      .then(response => {
+        setCharList(response.data.results);
+        // const charList = response.data.results;
+        // const charNames = charList.filter(char => {
+          // return char.name;
+        })
+        // console.log(charNames);
+      // })
+      .catch(error => {
+        console.log("Error retrieving data: ", error);
+      })
+    } // if
+  } // axiosCall
+
+
 
   return (
     <section className="search-form">
