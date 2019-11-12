@@ -44,10 +44,15 @@ export default function SearchForm() {
     console.log(inputValue);
   };
 
+  const submitHandler = event => {
+    event.preventDefault();
+    console.log(inputValue);
+  };
+
   return (
     <section className="search-form">
      {/* Add a search form here */}
-     <form>
+     <form onSubmit={event => submitHandler(event)}>
        <label for="Search">
         <Input type='text' name='search' placeholder='Enter character name' onChange={event => searchHandler(event)} />
        </label>
