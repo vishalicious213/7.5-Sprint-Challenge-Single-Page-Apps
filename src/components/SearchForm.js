@@ -37,12 +37,20 @@ const Button = styled.button`
 }`
 
 export default function SearchForm() {
- 
+  const [inputValue, setInputValue] = useState("");
+
+  const searchHandler = event => {
+    setInputValue(event.target.value);
+    console.log(inputValue);
+  };
+
   return (
     <section className="search-form">
      {/* Add a search form here */}
      <form>
-       <Input type='text' name='search' placeholder='Enter character name' />
+       <label for="Search">
+        <Input type='text' name='search' placeholder='Enter character name' onChange={searchHandler} />
+       </label>
        <Button>Search</Button>
      </form>
     </section>
