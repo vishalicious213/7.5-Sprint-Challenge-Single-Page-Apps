@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import CharacterCard from './CharacterCard';
 
 const Input = styled.input`
   font-size: 2rem;
@@ -40,25 +41,46 @@ const Button = styled.button`
 export default function SearchForm() {
   const [inputValue, setInputValue] = useState("");
   const [charList, setCharList] = useState([]);
+  let responseMonitor = [];
 
   const searchHandler = event => {
-    axiosCall();
+    if (charList === [] || (charList !== [] && charList !== responseMonitor)) {
+      axiosCall();
+      // console.log("charList: ", charList);
+      // console.log("monitor: ", responseMonitor);
+    };
     setInputValue(event.target.value);
     console.log(inputValue);
+    charList.forEach(char => {
+      if ((char.name.toLowerCase()).includes(inputValue.toLowerCase())) {
+        // console.log(char.name);
+        return (
+          <section className="grid-view">
+            {charList.map(char => {
+              return (<CharacterCard key={char.id} name={char.name} species={char.species} type={char.type} status={char.status} gender={char.gender} origin={char.origin.name} location={char.location.name} imgSrc={char.image} />)
+            })}
+          </section>
+        );}
+    });
+    // charList.name.forEach(console.log(charList.name.includes(inputValue)));
   };
 
   const submitHandler = event => {
     event.preventDefault();
     // console.log(inputValue);
-    // axiosCall();
-    console.log(charList);
+    // console.log(charList);
   };
 
   function axiosCall() {
-    if (charList === [] || (charList !== [] && charList !== setCharList)) {
+    // console.log("charList: ", charlist);
+    // console.log("setCharList: ", setCharList);
+    // if (charList === [] || (charList !== [] && charList !== setCharList)) {
       axios.get('https://rickandmortyapi.com/api/character/')
       .then(response => {
         setCharList(response.data.results);
+        // console.log("Updated character list");
+        responseMonitor = response.data.results;
+        // console.log("monitor2: ", responseMonitor);
         // const charList = response.data.results;
         // const charNames = charList.filter(char => {
           // return char.name;
@@ -68,7 +90,7 @@ export default function SearchForm() {
       .catch(error => {
         console.log("Error retrieving data: ", error);
       })
-    } // if
+    // } // if
   } // axiosCall
 
 
