@@ -49,7 +49,7 @@ export default function SearchForm() {
      {/* Add a search form here */}
      <form>
        <label for="Search">
-        <Input type='text' name='search' placeholder='Enter character name' onChange={searchHandler} />
+        <Input type='text' name='search' placeholder='Enter character name' onChange={event => searchHandler(event)} />
        </label>
        <Button>Search</Button>
      </form>
