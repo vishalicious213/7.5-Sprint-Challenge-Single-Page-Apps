@@ -51,17 +51,20 @@ export default function SearchForm() {
     };
     setInputValue(event.target.value);
     console.log(inputValue);
-    charList.forEach(char => {
+    return (charList.forEach(char => {
       if ((char.name.toLowerCase()).includes(inputValue.toLowerCase())) {
         // console.log(char.name);
         return (
           <section className="grid-view">
+            {/* {console.log("Sending filtered info to card creator")}; */}
+            {/* {console.log(char.name, char.species, char.type, char.status, char.gender, char.origin.name, char.location.name)}; */}
             {charList.map(char => {
               return (<CharacterCard key={char.id} name={char.name} species={char.species} type={char.type} status={char.status} gender={char.gender} origin={char.origin.name} location={char.location.name} imgSrc={char.image} />)
-            })}
+            })};
+            {console.log("test")}
           </section>
         );}
-    });
+    }));
     // charList.name.forEach(console.log(charList.name.includes(inputValue)));
   };
 
